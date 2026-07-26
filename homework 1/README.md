@@ -189,7 +189,7 @@ No changes to `requirements.txt` — everything below uses the Python standard l
 
 ## Building It
 
-### Step 0: Clean up how `db` is shared (optional, but recommended)
+### Step 0: Clean up how `db` is shared and change the model usage
 
 This isn't required for the multi-expert system to work — skip it if you want to get straight to Step 1. But Homework 0 shares the database connection with `routes.py`/`socket_events.py` in a slightly awkward way: both files declare `db = None` at the top and rely on `create_app()` reaching into the module afterward (`routes.db = db`) to fill it in. It works, but it's easy to find confusing — nothing about reading `db = None` in the file tells you it becomes a real object later.
 
@@ -211,6 +211,8 @@ ai_response = handle_ai_chat_request(db, role="Orchestrator", message=user_messa
 ```
 
 (Flask-SocketIO runs event handlers inside an app context automatically, so `current_app` works here too, not just in HTTP routes.)
+
+In `flask_app/utils/llm.py` change the model defaul to DEFAULT_MODEL = "openai/gpt-4o-mini".
 
 ### Step 1: The master prompt template
 
@@ -526,7 +528,7 @@ Work through these four prompts in order — each one exercises a different part
 
 If a step fails, the console output (the `print()` lines you added in Step 4) is your first debugging tool — it shows you exactly what the model generated before it was executed.
 
-> **Watch your API usage while testing.** Homework 0 made one model call per chat message. Homework 1's Orchestrator makes *several* — one to plan, one per expert it calls, one to synthesize — so a single compound question can cost 3-5x what Homework 0 did. OpenRouter's free tier caps requests **per day, per account, shared across every `:free` model** — switching `DEFAULT_MODEL` to a different free model does not reset or bypass this cap. If `send_message` starts returning `⚠️ OpenRouter error: Rate limit exceeded: free-models-per-day`, that's what's happening; test deliberately (a handful of focused runs) rather than repeatedly re-running the same prompt while debugging, especially in the day or two before you record your demo video.
+> **Watch your API usage while testing.** Homework 0 made one model call per chat message. Homework 1's Orchestrator makes *several* — one to plan, one per expert it calls, one to synthesize — so a single compound question can cost 3-5x what Homework 0 did. OpenRouter's free tier caps requests **per day, per account, shared across every `:free` model** — switching `DEFAULT_MODEL` to a different free model does not reset or bypass this cap. If `send_message` starts returning `⚠️ OpenRouter error: Rate limit exceeded: free-models-per-day`, that's what's happening; 
 
 ---
 
@@ -555,6 +557,7 @@ You don't need to submit answers, but you'll be asked about these:
 3. **What changed from Homework 0?** What's gained, and what's lost, going from one system prompt to four coordinated experts?
 4. **`eval()` and `exec()` on model output.** The Orchestrator's plan and the Write Expert's code are both executed directly. What could a strange, confused, or deliberately adversarial user message cause the model to generate — and what would actually happen if that ran? What would you change here if this were a production system instead of a classroom exercise?
 5. **Few-shot examples matter.** Edit one of the examples in your `llm_roles` data and see how the generated SQL/code/plans change. What does that tell you about how much of an LLM's behavior comes from its instructions versus its examples?
+6. **From lecture, what prompt engineering techniques could you use?** How would you apply them to this multi-expert system?
 
 ---
 
