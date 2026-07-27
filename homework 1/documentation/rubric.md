@@ -6,10 +6,11 @@ This assignment is graded on a 100 point scale. All grading is based on your dem
 
 | # | Requirement | Points | How to demonstrate |
 |---|-------------|--------|--------------------|
-| 1 | **Database Read Expert** — ask a question like "How long did they work at [institution]?" | 25 | Show the console printing the generated SQL query, and the chat replying with an accurate answer |
-| 2 | **Database Write Expert** — ask to add a skill, e.g. "Add [skill] to [experience]" | 25 | Show the console printing the generated Python code, the skill appearing on the resume page right after the AI responds, and it still being there after you manually reload the page |
-| 3 | **Orchestrator Coordination** — ask a compound request, e.g. "Does he know [skill]? If not, add it to [experience]." | 25 | Show the console printing the Orchestrator's plan, that the plan includes both a Database Read Expert call and a Database Write Expert call in the right order, and that both actually execute in that order |
-| 4 | **Database Schema** — the `llm_roles` table | 25 | Show, via a query or a database browser, that `llm_roles` exists and contains all four expert configurations (Database Read Expert, Database Write Expert, Content Expert, Orchestrator) |
+| 1 | **Database Read Expert** — ask a question like "How long did they work at [institution]?" | 20 | Show the console printing the generated SQL query, and the chat replying with an accurate answer |
+| 2 | **Database Write Expert** — ask to add a skill, e.g. "Add [skill] to [experience]" | 20 | Show the console printing the generated Python code, the skill appearing on the resume page right after the AI responds, and it still being there after you manually reload the page |
+| 3 | **Orchestrator Coordination** — ask a compound request, e.g. "Does he know [skill]? If not, add it to [experience]." | 20 | Show the console printing the Orchestrator's plan, that the plan includes both a Database Read Expert call and a Database Write Expert call in the right order, and that both actually execute in that order |
+| 4 | **Database Schema** — the `llm_roles` table | 20 | Show, via a query or a database browser, that `llm_roles` exists and contains all four expert configurations (Database Read Expert, Database Write Expert, Content Expert, Orchestrator) |
+| 5 | **Concept Question** — Explain 3 different prompt engineering concepts that you tried and their effectiveness | 20 | Add a file called `prompt_engineering.md` |
 
 ## Grading Policy
 
