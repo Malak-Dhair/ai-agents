@@ -575,4 +575,8 @@ git push origin main
 Then record a short demo video (see `documentation/rubric.md` for exactly what to show and how it's graded), and submit **both** of the following via the course submission form:
 
 1. Your demo video
+<<<<<<< HEAD
 2. Your fork's GitHub URL (e.g. `https://github.com/YOUR-USERNAME/ai-agents`) so the grader can view your code
+=======
+2. Your fork's GitHub URL (e.g. `https://github.com/YOUR-USERNAME/ai-agents`) so the grader can view your code
+>>>>>>> ee206e61f9d9ae18caf14d02e27996fc19bc5fe6
