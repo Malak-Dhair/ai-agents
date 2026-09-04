@@ -1,7 +1,6 @@
 # CSE 491 — AI Agents: Homework 1 Rubric
 
 This assignment is graded on a 100 point scale. All grading is based on your demo video.
-git add .
 ## Functional Requirements
 
 | # | Requirement | Points | How to demonstrate |
